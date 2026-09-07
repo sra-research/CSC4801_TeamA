@@ -29,7 +29,7 @@ def match_score(candidate_skills, required_skills):
     candidate = {s.strip().lower() for s in candidate_skills.split(',') if s.strip()}
     required = {s.strip().lower() for s in required_skills.split(',') if s.strip()}
     if not required:
-        return 0
+        return 100
     return 100 * len(candidate & required) // len(required)
 
 

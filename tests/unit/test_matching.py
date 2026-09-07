@@ -14,6 +14,15 @@ def test_fp_match_1_examples_normalization_and_floor(candidate, required, expect
     assert match_score(candidate, required) == expected
 
 
+@pytest.mark.parametrize('candidate,required', [
+    ('Python', ''),
+    ('', ''),
+    ('Rust', ' ,  , '),
+])
+def test_fp_match_1_empty_required_skills(candidate, required):
+    assert match_score(candidate, required) == 100
+
+
 def test_view_escapes_user_input():
     response = index(RequestFactory().get('/', {'candidate': '<script>alert(1)</script>', 'required': 'Python'}))
     html = response.content.decode()

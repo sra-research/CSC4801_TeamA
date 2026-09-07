@@ -27,7 +27,7 @@ optional requirements as `N/A`. The `pass` examples do not verify behavior.
 | Requirement ID | Behavior to verify | Implementation file(s) | Unit test(s) / verification evidence |
 |---|---|---|---|
 | FP-AUTH-1 | Registration and session lifecycle | To be filled by the team | `tests/unit/test_auth.py::test_fp_auth_1_registration_and_session_lifecycle` (placeholder) |
-| FP-MATCH-1 | Score calculation (demo); dashboard tie-breaking remains to be implemented | `app.py::match_score` | `tests/unit/test_matching.py::test_fp_match_1_examples_normalization_and_floor` (implemented); `tests/unit/test_matching.py::test_fp_match_1_both_tie_breakers` (placeholder) |
+| FP-MATCH-1 | Score calculation (demo); dashboard tie-breaking remains to be implemented | `app.py::match_score` | `tests/unit/test_matching.py::test_fp_match_1_examples_normalization_and_floor` and `tests/unit/test_matching.py::test_fp_match_1_empty_required_skills` (implemented); `tests/unit/test_matching.py::test_fp_match_1_both_tie_breakers` (placeholder) |
 | FP-SCHED-3 | Booking conflict outcome | To be filled by the team | `tests/unit/test_scheduling.py::test_fp_sched_3_conflict_contract` (placeholder) |
 
 ## Document Index
