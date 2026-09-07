@@ -1,8 +1,8 @@
 # Cross-team audit labels for the CSC4801 final project.
-#
-# Import into a team repository with, e.g., github-label-sync:
-#   npx github-label-sync --labels labels.yml <owner>/<repo>
-# or any label importer that accepts a name/color/description list.
+# Synced repository-wide by .github/workflows/sync-labels.yml on pushes to any
+# branch containing the workflow, including repository creation from a template.
+# Each run uses the label definitions from its triggering branch.
+# Existing labels with these names are updated; other labels are preserved.
 
 - name: "audit:report"
   color: "d73a4a"
