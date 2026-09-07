@@ -1,3 +1,2 @@
-# All direct and transitive runtime/test versions are locked here.
-# Example-only, use and lock your own dependencies
+# Locked runtime and unit-test dependencies for the local Django demonstration.
 -r requirements.lock
