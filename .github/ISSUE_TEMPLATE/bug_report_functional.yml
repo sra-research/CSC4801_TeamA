@@ -1,5 +1,5 @@
-name: "Audit report: functional"
-description: Report a reproducible functional finding from the Week 12 peer review
+name: "Bug report: functional"
+description: Report a reproducible functional bug found during the Week 12 peer review
 title: "[AUDIT] "
 labels:
   - "audit:report"

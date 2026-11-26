@@ -1,15 +1,15 @@
-name: "Audit report: environment"
-description: Report a reproducible environment finding from the Week 12 peer review
+name: "Bug report: performance"
+description: Report a reproducible performance bug found during the Week 12 peer review
 title: "[AUDIT] "
 labels:
   - "audit:report"
   - "status:needs-triage"
-  - "type:environment"
+  - "type:performance"
 body:
   - type: markdown
     attributes:
       value: |
-        This form files a report of type **environment** and adds `type:environment` automatically. Environmental issue, e.g., the repository's `Dockerfile` fails to build or run. If your finding is a different type, go back and choose the matching form.
+        This form files a report of type **performance** and adds `type:performance` automatically. A documented performance expectation fails on a small, safe fixture. Load or resource-exhaustion testing is never allowed. If your finding is a different type, go back and choose the matching form.
 
         Read the course `final_project/PEER_REVIEW.md` first and search existing issues before filing. Audit the latest commit on the target team's `main` branch, built from the repository's `Dockerfile`. Never post credentials or personal data.
 
