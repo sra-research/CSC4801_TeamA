@@ -8,7 +8,9 @@ body:
   - type: markdown
     attributes:
       value: |
-        Read the `PEER_REVIEW.md` first and search existing issues before filing. Audit the latest commit on the target team's `main` branch, built from the repository's `Dockerfile`. Never post credentials or personal data. After submitting, add exactly one `type:*` label matching your selection below.
+        Read the course `final_project/PEER_REVIEW.md` first and search existing issues before filing. Audit the latest commit on the target team's `main` branch, built from the repository's `Dockerfile`. Never post credentials or personal data. The matching `type:*` label is added automatically from the **Type** you select below.
+
+        Reports still awaiting triage are automatically confirmed after 25 hours from creation if no human repository owner, organization member, or collaborator other than the reporter has commented. Reporter follow-ups and bot comments do not count as responses. Checks run every hour and may be delayed by GitHub. Timeout confirmation leaves the issue open and does not replace instructor review of validity.
   - type: input
     id: reporting-team
     attributes:
@@ -31,6 +33,7 @@ body:
         - security
         - functional
         - performance
+        - environment
     validations:
       required: true
   - type: textarea

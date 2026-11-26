@@ -1,8 +1,8 @@
 # Cross-team audit labels for the CSC4801 final project.
-#
-# Import into a team repository with, e.g., github-label-sync:
-#   npx github-label-sync --labels labels.yml <owner>/<repo>
-# or any label importer that accepts a name/color/description list.
+# Synced repository-wide by .github/workflows/sync-labels.yml on pushes to any
+# branch containing the workflow, including repository creation from a template.
+# Each run uses the label definitions from its triggering branch.
+# Existing labels with these names are updated; other labels are preserved.
 
 - name: "audit:report"
   color: "d73a4a"
@@ -20,13 +20,16 @@
 - name: "type:performance"
   color: "5319e7"
   description: "Reproducible performance problem on a small, safe fixture"
+- name: "type:environment"
+  color: "c5def5"
+  description: "Dockerfile or documented start/seed/test flow fails to build or run"
 
 - name: "status:needs-triage"
   color: "fbca04"
   description: "New report awaiting triage by the target team or instructor"
 - name: "status:confirmed"
   color: "0e8a16"
-  description: "Reproducible, in scope, safe, and not a duplicate"
+  description: "Confirmed by triage or the 25-hour no-response rule"
 - name: "status:rejected"
   color: "e11d21"
   description: "Fails a valid-finding condition"
