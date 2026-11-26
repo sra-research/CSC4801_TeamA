@@ -22,7 +22,7 @@
   description: "Reproducible performance problem on a small, safe fixture"
 - name: "type:environment"
   color: "c5def5"
-  description: "Dockerfile or documented start/seed/test flow fails to build or run"
+  description: "Environmental issue, e.g., the Dockerfile fails to build or run"
 
 - name: "status:needs-triage"
   color: "fbca04"
