@@ -1,0 +1,51 @@
+name: Sync repository labels
+
+# Template creation emits a push event. Pushes to any branch synchronize
+# repository-wide labels using the definitions in that branch.
+on:
+  push:
+    branches: ['**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: sync-repository-labels
+  cancel-in-progress: false
+
+jobs:
+  sync-labels:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Install YAML reader
+        run: |
+          python3 -m venv "$RUNNER_TEMP/label-sync-venv"
+          "$RUNNER_TEMP/label-sync-venv/bin/python" -m pip install PyYAML==6.0.3
+
+      - name: Create or update configured labels
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          "$RUNNER_TEMP/label-sync-venv/bin/python" - <<'PYTHON'
+          from pathlib import Path
+          import subprocess
+          import yaml
+
+          labels = yaml.safe_load(Path(".github/labels.yml").read_text())
+          for label in labels:
+              subprocess.run([
+                  "gh", "label", "create", label["name"],
+                  "--color", label["color"],
+                  "--description", label["description"],
+                  "--force",
+              ], check=True)
+          print(f"Synchronized {len(labels)} labels; other labels were preserved.")
+          PYTHON

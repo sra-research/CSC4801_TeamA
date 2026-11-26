@@ -1,0 +1,35 @@
+name: Auto-confirm unanswered audit reports
+
+on:
+  schedule:
+    - cron: '1 * * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Preview eligible reports without changing issues
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: auto-confirm-audits
+  cancel-in-progress: false
+
+jobs:
+  auto-confirm:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/github-script@v8
+        env:
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
+        with:
+          script: |
+            const run = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/auto-confirm-audits.cjs`);
+            await run({github, context, core, dryRun: process.env.DRY_RUN === 'true'});
